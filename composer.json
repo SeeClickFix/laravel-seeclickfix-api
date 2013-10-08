@@ -1,0 +1,23 @@
+{
+    "name": "seeclickfix/laravel-seeclickfix-api",
+    "description": "SeeClickFix Laravel API",
+    "keywords": ["seeclickfix", "sdk"],
+    "homepage": "https://github.com/seeclickfix/laravel-seeclickfix-api",
+    "license": "Apache2",
+    "authors": [
+        {
+            "name": "Daniel Stainback",
+            "email": "daniel@seeclickfix.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "psr-0": {
+            "SeeClickFix\\API": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
