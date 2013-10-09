@@ -126,7 +126,7 @@ public function loginWithSeeClickFix() {
 }
 ```
 
-In your Views use the following code:
+In your Blade Views use the following code:
 
 ```php
 @if (SeeClickFix::check())
