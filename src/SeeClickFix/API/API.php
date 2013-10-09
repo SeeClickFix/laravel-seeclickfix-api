@@ -93,18 +93,18 @@ class API {
      */
     public function getAccessToken( $code )
     {
-        $this->token = $this->api->getAccessToken( $code );
-        $this->api->setAccessToken($this->token);
+        $token = $this->api->getAccessToken( $code );
+        $this->api->setAccessToken($token);
 
         $this->user = $this->getCurrentUser();
 
         // Create an array of data to persist to the session
-        $toPersist = array($this->user->getId(), $this->token);
+        $toPersist = array($this->user->getId(), $token);
 
         // Set sessions
         $this->session->put('seeclickfix_access_token', $toPersist);
 
-        return $this->token;
+        return $token;
     }
 
     /**
@@ -127,7 +127,9 @@ class API {
             return false;
         }
 
-        list($this->userId, $this->token) = $userArray;
+        list($this->userId, $token) = $userArray;
+
+        $this->api->setAccessToken($token);
 
         return true;
     }
