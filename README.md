@@ -1,6 +1,6 @@
 # SeeClickFix wrapper for Laravel 4 - Alpha
 
-Laravel Seeclickfix API is a simple laravel 4 service provider (wrapper) for [SeeClickFix/seeclickfix-php-sdk]( https://github.com/SeeClickFix/seeclickfix-php-sdk) 
+Laravel Seeclickfix API is a simple laravel 4 service provider (wrapper) for [torann/seeclickfix-php-sdk]( https://github.com/torann/seeclickfix-php-sdk) 
 witch provides API support in PHP 5.3+
 
 ---
@@ -17,7 +17,7 @@ Add laravel-seeclickfix-api to your composer.json file:
 
 ```
 "require": {
-  "seeclickfix/laravel-seeclickfix-api": "dev-master"
+  "torann/laravel-seeclickfix-api": "dev-master"
 }
 ```
 
@@ -30,7 +30,7 @@ $ composer update
 Create configuration file using artisan
 
 ```
-$ php artisan config:publish seeclickfix/laravel-seeclickfix-api
+$ php artisan config:publish torann/laravel-seeclickfix-api
 ```
 
 ## Configuration
@@ -51,7 +51,7 @@ and register this service provider at the bottom of the `$providers` array:
 
 ### Credentials
 
-Add your credentials to ``app/config/packages/seeclickfix/laravel-seeclickfix-api/config.php``
+Add your credentials to ``app/config/packages/torann/laravel-seeclickfix-api/config.php``
 
 ```php
 return array( 
@@ -79,12 +79,12 @@ return array(
  - `getUserId()`
  - `logout()`
 
-For a full list of API calls check the [SeeClickFix/seeclickfix-php-sdk]( https://github.com/SeeClickFix/seeclickfix-php-sdk/wiki) wiki. 
+For a full list of API calls check the [torann/seeclickfix-php-sdk]( https://github.com/torann/seeclickfix-php-sdk/wiki) wiki. 
 
 ## Usage examples
 
 Configuration:
-Add your credentials to ``app/config/packages/seeclickfix/laravel-seeclickfix-api/config.php``
+Add your credentials to ``app/config/packages/torann/laravel-seeclickfix-api/config.php``
 
 ```php
     'client_id'     => 'Your client ID',
