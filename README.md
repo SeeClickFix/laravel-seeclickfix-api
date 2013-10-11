@@ -1,6 +1,6 @@
-# SeeClickFix wrapper for Laravel 4
+# SeeClickFix wrapper for Laravel 4 - Alpha
 
-laravel-seeclickfix-api is a simple laravel 4 service provider (wrapper) for [SeeClickFix/seeclickfix-php-sdk]( https://github.com/SeeClickFix/seeclickfix-php-sdk) 
+Laravel Seeclickfix API is a simple laravel 4 service provider (wrapper) for [SeeClickFix/seeclickfix-php-sdk]( https://github.com/SeeClickFix/seeclickfix-php-sdk) 
 witch provides API support in PHP 5.3+
 
 ---
