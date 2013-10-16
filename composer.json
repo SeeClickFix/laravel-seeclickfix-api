@@ -1,9 +1,9 @@
 {
-    "name": "torann/laravel-seeclickfix-api",
+    "name": "seeclickfix/laravel-seeclickfix-api",
     "description": "SeeClickFix Laravel API",
     "keywords": ["seeclickfix", "sdk"],
-    "homepage": "https://github.com/torann/laravel-seeclickfix-api",
-    "license": "Apache2",
+    "homepage": "https://github.com/seeclickfix/laravel-seeclickfix-api",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Daniel Stainback",
