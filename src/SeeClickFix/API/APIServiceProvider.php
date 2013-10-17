@@ -36,7 +36,8 @@ class APIServiceProvider extends ServiceProvider {
 				$app['config']['laravel-seeclickfix-api::client_id'],
 	            $app['config']['laravel-seeclickfix-api::client_secret'],
 	            \Request::root() . $app['config']['laravel-seeclickfix-api::redirect_uri'],
-	            $app['session.store']
+	            $app['session.store'],
+	            $app['config']['laravel-seeclickfix-api::sandbox_mode']
 			);
 	    });
 	}

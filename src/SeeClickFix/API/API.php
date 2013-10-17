@@ -55,12 +55,13 @@ class API {
      * @param  string $redirect_uri
      * @return void
      */
-    public function __construct($client_id, $client_secret, $redirect_uri = null, SessionStore $session)
+    public function __construct($client_id, $client_secret, $redirect_uri = null, SessionStore $session, $sandboxMode)
     {
         $this->api = new SeeClickFixSDK\SeeClickFix(array(
             'client_id'      => $client_id,
             'client_secret'  => $client_secret,
-            'redirect_uri'   => $redirect_uri
+            'redirect_uri'   => $redirect_uri,
+            'sandbox'        => $sandboxMode
         ));
 
         $this->session = $session;
