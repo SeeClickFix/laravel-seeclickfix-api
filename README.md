@@ -82,20 +82,15 @@ When developing your application set `sandbox_mode` to _true_. This will allow y
 
 ### Basic usage
 
-- **SeeClickFix::getAuthorizationUri()**
-  This will redirect the user to the SeeClickFix authorization page.
+**SeeClickFix::getAuthorizationUri()** -This will redirect the user to the SeeClickFix authorization page.
 
-- **SeeClickFix::getAccessToken()**
-  Gets access token and validates it.
+**SeeClickFix::getAccessToken()** - Gets access token and validates it.
 
-- **SeeClickFix::check()**
-  Determine if the user is logged in.
+**SeeClickFix::check()** - Determine if the user is logged in.
 
-- **SeeClickFix::getUserId( $id )**
-  Returns a single user by `id`.
+**SeeClickFix::getUserId( $id )** - Returns a single user by `id`.
 
-- **SeeClickFix::logout()**
-  Log current user out.
+**SeeClickFix::logout()** - Log current user out.
 
 For a full list of API calls check the [seeclickfix/seeclickfix-php-sdk]( https://github.com/seeclickfix/seeclickfix-php-sdk) wiki. 
 
