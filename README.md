@@ -16,23 +16,23 @@ which provides API support in PHP 5.3+
 
 Add laravel-seeclickfix-api to your composer.json file:
 
-```
+~~~
 "require": {
   "seeclickfix/laravel-seeclickfix-api": "dev-master"
 }
-```
+~~~
 
 Use composer to install this package.
 
-```
+~~~
 $ composer update
-```
+~~~
 
 Create configuration file using artisan
 
-```
+~~~
 $ php artisan config:publish seeclickfix/laravel-seeclickfix-api
-```
+~~~
 
 ## Configuration
 
@@ -40,62 +40,70 @@ $ php artisan config:publish seeclickfix/laravel-seeclickfix-api
 
 Add an alias to the bottom of app/config/app.php
 
-```php
+~~~php
 'SeeClickFix' => 'SeeClickFix\API\Facade\API',
-```
+~~~
 
 and register this service provider at the bottom of the `$providers` array:
 
-```php
+~~~php
 'SeeClickFix\API\APIServiceProvider',
-```
+~~~
 
 ### Credentials
 
 Add your credentials to ``app/config/packages/seeclickfix/laravel-seeclickfix-api/config.php``
 
-```php
+~~~php
 return array( 
 	
 	/*
 	|--------------------------------------------------------------------------
-	| SeeClickFix Config
+	| oAuth Settings
 	|--------------------------------------------------------------------------
 	*/
-
     'client_id'      => '',
     'client_secret'  => '',
     'redirect_uri'   => '', // Relative path
 
+	/*
+	|--------------------------------------------------------------------------
+	| Development Settings
+	|--------------------------------------------------------------------------
+	*/
+    'sandbox_mode'	 => false,
+
 );
-```
+~~~
+
+When developing your application set `sandbox_mode` to _true_. This will allow you to test out features on our test server.
 
 ## Usage
 
 ### Basic usage
 
- - `getAuthorizationUri()`
- - `getAccessToken()`
- - `check()`
- - `getUserId()`
- - `logout()`
+- **SeeClickFix::getAuthorizationUri()**
+  This will redirect the user to the SeeClickFix authorization page.
 
-For a full list of API calls check the [seeclickfix/seeclickfix-php-sdk]( https://github.com/seeclickfix/seeclickfix-php-sdk/wiki) wiki. 
+- **SeeClickFix::getAccessToken()**
+  Gets access token and validates it.
+
+- **SeeClickFix::check()**
+  Determine if the user is logged in.
+
+- **SeeClickFix::getUserId( $id )**
+  Returns a single user by `id`.
+
+- **SeeClickFix::logout()**
+  Log current user out.
+
+For a full list of API calls check the [seeclickfix/seeclickfix-php-sdk]( https://github.com/seeclickfix/seeclickfix-php-sdk) wiki. 
 
 ## Usage examples
 
-Configuration:
-Add your credentials to ``app/config/packages/seeclickfix/laravel-seeclickfix-api/config.php``
-
-```php
-    'client_id'     => 'Your client ID',
-    'client_secret' => 'Your Client Secret',
-    'redirect_uri'  => 'Your redirect URL',
-),	
-```
 In your Controller use the following code:
 
-```php
+~~~php
 /**
  * Login user with SeeClickFix
  *
@@ -125,17 +133,17 @@ public function loginWithSeeClickFix() {
 	}
 
 }
-```
+~~~
 
 In your Blade Views use the following code:
 
-```php
+~~~php
 @if (SeeClickFix::check())
 	<li><a href="{{ route('logout') }}" class="external">Logout</a></li>
 @else
 	<li><a href="{{ route('login') }}" class="external">Login/Sign-up</a></li>
 @endif
-```
+~~~
 
 ##License
 
