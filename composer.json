@@ -1,7 +1,7 @@
 {
     "name": "seeclickfix/laravel-seeclickfix-api",
     "description": "SeeClickFix Laravel API",
-    "keywords": ["seeclickfix", "sdk"],
+    "keywords": ["laravel", "seeclickfix", "sdk", "api"],
     "homepage": "https://github.com/seeclickfix/laravel-seeclickfix-api",
     "license": "Apache-2.0",
     "authors": [
