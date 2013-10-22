@@ -58,25 +58,36 @@ Add your credentials to ``app/config/packages/seeclickfix/laravel-seeclickfix-ap
 return array( 
 	
 	/*
-	|--------------------------------------------------------------------------
-	| oAuth Settings
-	|--------------------------------------------------------------------------
-	*/
-    'client_id'      => '',
-    'client_secret'  => '',
-    'redirect_uri'   => '', // Relative path
+	 |--------------------------------------------------------------------------
+	 | Settings
+	 |--------------------------------------------------------------------------
+	 */
+
+    'location'	     => 'default',
+    'sandbox_mode'	 => false,
 
 	/*
-	|--------------------------------------------------------------------------
-	| Development Settings
-	|--------------------------------------------------------------------------
-	*/
-    'sandbox_mode'	 => false,
+	 |--------------------------------------------------------------------------
+	 | Locations
+	 |--------------------------------------------------------------------------
+	 */
+
+	'default'    => array(
+
+	    'client_id'      => '',
+	    'client_secret'  => '',
+	    'redirect_uri'   => '', // Relative path
+	    "lat" => 41.29841599999985,
+	    "lng" => -72.9291785
+
+	),
 
 );
 ~~~
 
 When developing your application set `sandbox_mode` to _true_. This will allow you to test out features on our test server.
+
+`location` is used with apps that support multiple locations.
 
 ## Usage
 
