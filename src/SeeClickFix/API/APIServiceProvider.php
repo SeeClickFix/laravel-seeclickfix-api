@@ -32,14 +32,7 @@ class APIServiceProvider extends ServiceProvider {
 	    // Register 'SeeClickFix'
 	    $this->app["SeeClickFix"] = $this->app->share(function($app)
 	    {
-	    	$location = $app["config"]["laravel-seeclickfix-api::location"];
-			return new API(
-				$app["config"]["laravel-seeclickfix-api::$location.client_id"],
-	            $app["config"]["laravel-seeclickfix-api::$location.client_secret"],
-	            \Request::root() . $app["config"]["laravel-seeclickfix-api::$location.redirect_uri"],
-	            $app["session.store"],
-	            $app["config"]["laravel-seeclickfix-api::sandbox_mode"]
-			);
+			return new API($app["config"], $app["session.store"]);
 	    });
 	}
 

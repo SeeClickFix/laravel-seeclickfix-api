@@ -32,6 +32,20 @@ class API {
     protected $session;
 
     /**
+     * The config.
+     *
+     * @var \Illuminate\Config\Repository
+     */
+    protected $config;
+
+    /**
+     * Current location key.
+     *
+     * @var String
+     */
+    protected $location = 'default';
+
+    /**
      * The user provider, used for retrieving
      * objects which implement the SeeClickFix
      * API interface.
@@ -55,19 +69,35 @@ class API {
      * @param  string $redirect_uri
      * @return void
      */
-    public function __construct($client_id, $client_secret, $redirect_uri = null, SessionStore $session, $sandboxMode)
+    public function __construct($config, SessionStore $session)
     {
+        $this->location = $config["laravel-seeclickfix-api::location"];
+
         $this->api = new SeeClickFixSDK\SeeClickFix(array(
-            'client_id'      => $client_id,
-            'client_secret'  => $client_secret,
-            'redirect_uri'   => $redirect_uri,
-            'sandbox'        => $sandboxMode
+            'client_id'      => $config["laravel-seeclickfix-api::{$this->location}.client_id"],
+            'client_secret'  => $config["laravel-seeclickfix-api::{$this->location}.client_secret"],
+            'redirect_uri'   => \Request::root() . $config["laravel-seeclickfix-api::{$this->location}.redirect_uri"],
+            'sandbox'        => $config["laravel-seeclickfix-api::sandbox_mode"]
         ));
 
         $this->session = $session;
 
+        $this->config = $config;
+
         // Get token from the session, if any
         $this->check();
+    }
+
+    /**
+     * Get from value from config
+     *
+     * Returns the SeeClickFix config falue
+     * @return mix
+     * @access public
+     */
+    public function getConfig($key)
+    {
+        return $this->config["laravel-seeclickfix-api::{$this->location}.{$key}"];
     }
 
     /**
