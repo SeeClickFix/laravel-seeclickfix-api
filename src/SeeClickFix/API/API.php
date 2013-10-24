@@ -73,6 +73,11 @@ class API {
     {
         $this->location = $config["laravel-seeclickfix-api::location"];
 
+        // Fallback t default
+        if( ! $config["laravel-seeclickfix-api::{$this->location}"] ) {
+            $this->location = 'default';
+        }
+
         $this->api = new SeeClickFixSDK\SeeClickFix(array(
             'client_id'      => $config["laravel-seeclickfix-api::{$this->location}.client_id"],
             'client_secret'  => $config["laravel-seeclickfix-api::{$this->location}.client_secret"],

@@ -1,6 +1,7 @@
 <?php namespace SeeClickFix\API;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Auth\Guard;
 use SeeClickFixSDK;
 
 class APIServiceProvider extends ServiceProvider {
@@ -20,6 +21,18 @@ class APIServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('seeclickfix/laravel-seeclickfix-api');
+
+		//Add the SeeClickFix Auth driver
+		$this->app['auth']->extend('seeclickfix', function($app)
+		{
+		    return new Guard(
+		        new SeeClickFixUserProvider(
+					$app['hash'],
+					$app['config']['auth.model']
+		        ),
+		        $app["session.store"]
+		    );
+		});
 	}
 
 	/**
@@ -43,7 +56,7 @@ class APIServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array();
+		return array('seeclickfix');
 	}
 
 }
