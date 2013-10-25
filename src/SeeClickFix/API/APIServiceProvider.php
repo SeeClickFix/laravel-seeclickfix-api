@@ -21,18 +21,6 @@ class APIServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('seeclickfix/laravel-seeclickfix-api');
-
-		//Add the SeeClickFix Auth driver
-		$this->app['auth']->extend('seeclickfix', function($app)
-		{
-		    return new Guard(
-		        new SeeClickFixUserProvider(
-					$app['hash'],
-					$app['config']['auth.model']
-		        ),
-		        $app["session.store"]
-		    );
-		});
 	}
 
 	/**
