@@ -25,7 +25,7 @@ class API {
     protected $user;
 
     /**
-     * The session store used by the guard.
+     * The session store.
      *
      * @var \Illuminate\Session\Store
      */
