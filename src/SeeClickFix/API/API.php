@@ -82,6 +82,7 @@ class API {
             'client_id'      => $config["laravel-seeclickfix-api::{$this->location}.client_id"],
             'client_secret'  => $config["laravel-seeclickfix-api::{$this->location}.client_secret"],
             'redirect_uri'   => \Request::root() . $config["laravel-seeclickfix-api::{$this->location}.redirect_uri"],
+            'grant_type'     => $config["laravel-seeclickfix-api::grant_type"] ?: 'authorization_code',
             'sandbox'        => $config["laravel-seeclickfix-api::sandbox_mode"]
         ));
 
