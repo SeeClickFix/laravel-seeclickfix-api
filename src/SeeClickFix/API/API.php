@@ -73,7 +73,7 @@ class API {
     {
         $this->location = $config["laravel-seeclickfix-api::location"];
 
-        // Fallback t default
+        // Fallback to default
         if( ! $config["laravel-seeclickfix-api::{$this->location}"] ) {
             $this->location = 'default';
         }
