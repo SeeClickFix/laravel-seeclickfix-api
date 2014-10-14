@@ -1,11 +1,10 @@
 <?php namespace SeeClickFix\API;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Auth\Guard;
-use SeeClickFixSDK;
 
-class APIServiceProvider extends ServiceProvider {
-
+class ServiceProvider extends \Illuminate\Support\ServiceProvider
+{
 	/**
 	 * Indicates if loading of the provider is deferred.
 	 *
@@ -21,6 +20,9 @@ class APIServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('seeclickfix/laravel-seeclickfix-api');
+
+        // Add 'SeeClickFix' facade alias
+        AliasLoader::getInstance()->alias('SeeClickFix', 'SeeClickFix\API\Facade');
 	}
 
 	/**
@@ -33,7 +35,7 @@ class APIServiceProvider extends ServiceProvider {
 	    // Register 'SeeClickFix'
 	    $this->app["SeeClickFix"] = $this->app->share(function($app)
 	    {
-			return new API($app["config"], $app["session.store"]);
+			return new Manager($app["config"], $app["session.store"]);
 	    });
 	}
 
@@ -46,5 +48,4 @@ class APIServiceProvider extends ServiceProvider {
 	{
 		return array('seeclickfix');
 	}
-
 }

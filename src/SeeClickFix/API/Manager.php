@@ -1,11 +1,11 @@
 <?php namespace SeeClickFix\API;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Session\Store as SessionStore;
 
-use SeeClickFixSDK;
+use SeeClickFix\SeeClickFix;
 
-class API {
+class Manager
+{
     /**
      * The ID of the user that's been retrieved
      * and is used for authentication.
@@ -20,7 +20,7 @@ class API {
      * are available for finding the user to set
      * here.
      *
-     * @var \SeeClickFixSDK\User
+     * @var \SeeClickFix\User
      */
     protected $user;
 
@@ -50,7 +50,7 @@ class API {
      * objects which implement the SeeClickFix
      * API interface.
      *
-     * @var \SeeClickFixSDK\SeeClickFix
+     * @var \SeeClickFix\SeeClickFix
      */
     protected $api;
 
@@ -62,12 +62,10 @@ class API {
     protected $token;
 
     /**
-     * Create a new API object.
+     * Create a new Manager object.
      *
-     * @param  string $client_id
-     * @param  string $client_secret
-     * @param  string $redirect_uri
-     * @return void
+     * @param  array  $config
+     * @param  \Illuminate\Session\Store  $session
      */
     public function __construct($config, SessionStore $session)
     {
@@ -78,7 +76,7 @@ class API {
             $this->location = 'default';
         }
 
-        $this->api = new SeeClickFixSDK\SeeClickFix(array(
+        $this->api = new SeeClickFix(array(
             'client_id'      => $config["laravel-seeclickfix-api::{$this->location}.client_id"],
             'client_secret'  => $config["laravel-seeclickfix-api::{$this->location}.client_secret"],
             'redirect_uri'   => \Request::root() . $config["laravel-seeclickfix-api::{$this->location}.redirect_uri"],
@@ -96,9 +94,9 @@ class API {
     /**
      * Get from value from config
      *
-     * Returns the SeeClickFix config falue
-     * @return mix
-     * @access public
+     * Returns the SeeClickFix config false
+     *
+     * @return mixed
      */
     public function getConfig($key)
     {
@@ -109,8 +107,8 @@ class API {
      * Authorize
      *
      * Returns the SeeClickFix authorization url
+     *
      * @return string Returns the access token URL
-     * @access public
      */
     public function getAuthorizationUri()
     {
@@ -124,8 +122,7 @@ class API {
      *
      * @param string $code Code supplied by SeeClickFix
      * @return string Returns the access token
-     * @throws \SeeClickFixSDK\Core\ApiException
-     * @access public
+     * @throws \SeeClickFix\Core\ApiException
      */
     public function getAccessToken( $code )
     {
@@ -191,8 +188,7 @@ class API {
      *
      * Returns the current user wrapped in a CurrentUser object
      *
-     * @return \SeeClickFixSDK\CurrentUser
-     * @access public
+     * @return \SeeClickFix\CurrentUser
      */
     public function getCurrentUser()
     {
