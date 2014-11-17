@@ -13,18 +13,11 @@ return array(
 
 	/*
 	 |--------------------------------------------------------------------------
-	 | Locations
+	 | Keys
 	 |--------------------------------------------------------------------------
 	 */
 
-	'default'    => array(
-
-	    'client_id'      => '',
-	    'client_secret'  => '',
-	    'redirect_uri'   => '', // Relative path
-	    "lat" => 41.29841599999985,
-	    "lng" => -72.9291785
-
-	),
-
+    'client_id'      => '',
+    'client_secret'  => '',
+    'redirect_uri'   => '', // Relative path
 );
