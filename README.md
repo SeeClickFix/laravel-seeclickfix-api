@@ -70,26 +70,18 @@ return array(
 
 	/*
 	 |--------------------------------------------------------------------------
-	 | Locations
+	 | Keys
 	 |--------------------------------------------------------------------------
 	 */
 
-	'default'    => array(
-
-	    'client_id'      => '',
-	    'client_secret'  => '',
-	    'redirect_uri'   => '', // Relative path
-	    "lat" => 41.29841599999985,
-	    "lng" => -72.9291785
-
-	),
+	 'client_id'      => '',
+	 'client_secret'  => '',
+	 'redirect_uri'   => '', // Relative path
 
 );
 ~~~
 
 When developing your application set `sandbox_mode` to _true_. This will allow you to test out features on our test server.
-
-`location` is used with apps that support multiple locations.
 
 ## Usage
 
@@ -161,4 +153,4 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
-**Copyright 2013 SeeClickFix**
+**Copyright 2013-2015 SeeClickFix**
